@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="mn" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Намжилдорж Төгөлдөрийн хувийн хуудас — Tailwind CSS v4 хувилбар (Лаб 8)." />
+  <title>tuguldurn@lab8:~$ tailwind</title>
+  <!-- Apply the saved theme before first paint (no flash). -->
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+  </script>
+  <link rel="stylesheet" href="output.css" />
+</head>
+
+<body class="bg-slate-100 font-mono text-[15px] leading-relaxed text-slate-800 dark:bg-ink dark:text-slate-300">
+  <!-- Task 1 (same as Bootstrap): navbar -->
+  <header class="sticky top-0 z-10 border-b border-slate-300 bg-slate-100 dark:border-line dark:bg-ink">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 py-3" aria-label="Хуудасны цэс">
+      <a href="#about" class="mr-auto text-lg text-slate-900 dark:text-white"><kbd class="font-bold text-brand-dark dark:text-brand">tuguldurn@lab8:~$</kbd> whoami</a>
+      <!-- Task 3: dark mode button -->
+      <button id="theme-toggle" type="button" aria-label="Өнгөний горим солих"
+        class="rounded-md border border-slate-400 px-2 py-1 text-sm hover:bg-slate-200 lg:order-last dark:border-slate-600 dark:hover:bg-panel">🌙</button>
+      <button id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Цэс нээх"
+        class="rounded-md border border-slate-400 px-3 py-1 lg:hidden dark:border-slate-600">☰</button>
+      <ul id="menu" class="hidden w-full flex-col gap-1 lg:flex lg:w-auto lg:flex-row lg:gap-4">
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#about">~/about</a></li>
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#skills">~/skills</a></li>
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#favorites">~/favorites</a></li>
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#gallery">~/faq</a></li>
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#media">~/media</a></li>
+        <li><a class="block py-1 hover:text-brand-dark dark:hover:text-brand" href="#contact">~/contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="mx-auto grid max-w-7xl gap-6 px-4 py-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <main class="grid content-start gap-6">
+      <section id="about" class="grid gap-3 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Сайн уу 👋</h1>
+        <p>
+          Намайг <strong>Намжилдорж Төгөлдөр</strong> гэдэг. Мэдээллийн технологийн сургуульд
+          <mark class="rounded bg-yellow-300 px-1 text-slate-900">3-р курст</mark> сурдаг. Шинэ зүйл суралцах, бусдад сурсан мэдсэнээ
+          хуваалцах дуртай 😇. Танилцахад таатай байна. ✨
+        </p>
+      </section>
+
+      <!-- Task 1 (same as Bootstrap): 3-column card grid -->
+      <section id="skills" class="grid gap-4 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">🧰 Юу мэддэг вэ?</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">./html_css</kbd></h3>
+            <p>Вэб хуудасны бүтэц, загварыг хийхэд ашигладаг.</p>
+            <div class="h-1.5 w-1/2 rounded-full bg-slate-300 dark:bg-slate-700" role="progressbar" aria-label="HTML/CSS" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-full w-[60%] rounded-full bg-brand"></div>
+            </div>
+          </article>
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">./git_github</kbd></h3>
+            <p>Кодоо байршуулахад ашигладаг. <mark class="rounded bg-yellow-300 px-1 text-slate-900">GitHub Pages</mark> дээр кодоо үнэгүй байршуулдаг.</p>
+            <div class="h-1.5 w-1/2 rounded-full bg-slate-300 dark:bg-slate-700" role="progressbar" aria-label="Git/GitHub" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-full w-[40%] rounded-full bg-brand"></div>
+            </div>
+          </article>
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">./cpp</kbd></h3>
+            <p>Програмчлалын бодлого бодох дуртай. Шинэ бүтэц, алгоритмаар асуудал шийдэх нь сонирхолтой.</p>
+            <div class="h-1.5 w-1/2 rounded-full bg-slate-300 dark:bg-slate-700" role="progressbar" aria-label="C++" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+              <div class="h-full w-[30%] rounded-full bg-brand"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="favorites" class="grid gap-4 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">⭐ Дуртай зүйлс</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">language/</kbd></h3>
+            <p>Дуртай хэл: <strong>C++</strong></p>
+          </article>
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">frameworks/</kbd></h3>
+            <p>React · Vue · Next.js · Nuxt</p>
+          </article>
+          <article class="grid content-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 dark:border-line dark:bg-ink">
+            <h3 class="font-bold"><kbd class="text-brand-dark dark:text-brand">security/</kbd></h3>
+            <p>CTF тэмцээн</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Flip cards (the card analysed in task 5) — 3D done with built-in v4 utilities -->
+      <section id="gallery" class="grid gap-4 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">💬 Асуулт хариулт</h2>
+        <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Яагаад вэб хөгжүүлэлт сонирхдог вэ?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink">Код бичээд хөтөч дээр үр дүнг нь шууд харж болдог нь надад таалагддаг.</p>
+              </div>
+            </article>
+          </li>
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Одоо юу сурч байна вэ?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink"><span>Япон хэл <strong>dekiru nihongo</strong> номноос сурж байгаа. Ирэх 12 сард N5 шалгалт өгнө.</span></p>
+              </div>
+            </article>
+          </li>
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Ойрын зорилго юу вэ?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink">OverTheWire-ийн CTF дасгалуудыг шийдэх зорилготой.</p>
+              </div>
+            </article>
+          </li>
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Дуртай програмчлалын хэл?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink"><span><strong>C++</strong> — бодлого бодоход хамгийн их ашигладаг.</span></p>
+              </div>
+            </article>
+          </li>
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Кодоо хаана байршуулдаг вэ?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink">Git/GitHub ашиглаж, GitHub Pages дээр үнэгүй байршуулдаг.</p>
+              </div>
+            </article>
+          </li>
+          <li class="grid">
+            <article tabindex="0" class="group cursor-pointer rounded-lg perspective-[900px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+              <div class="grid h-full min-h-40 transition-transform duration-700 transform-3d group-hover:rotate-y-180 group-focus-within:rotate-y-180 motion-reduce:transition-none">
+                <h3 class="col-start-1 row-start-1 grid content-center gap-2 rounded-lg border border-slate-300 bg-slate-50 p-4 font-bold backface-hidden dark:border-line dark:bg-ink"><kbd class="text-brand-dark dark:text-brand">?</kbd> Чөлөөт цагаараа юу хийдэг вэ?</h3>
+                <p class="col-start-1 row-start-1 grid content-center rounded-lg bg-brand-dark p-4 text-white rotate-y-180 backface-hidden dark:bg-brand dark:text-ink">CTF тэмцээнд оролцож, шинэ технологи судалдаг.</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section id="media" class="grid gap-4 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">🎬 Youtube хаяг</h2>
+        <figure class="mx-auto grid w-full max-w-[315px] gap-2">
+          <iframe class="aspect-[9/16] w-full rounded-lg bg-black" title="Надад таалагдсан видео (YouTube Shorts)" loading="lazy"
+            src="https://www.youtube-nocookie.com/embed/RkWHsgUqphY"
+            allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <figcaption class="text-sm text-slate-600 dark:text-slate-400">Subscribe хийгээрэй 😊</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <aside class="grid content-start gap-6">
+      <section id="fortune" class="grid gap-3 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold"><kbd class="text-brand-dark dark:text-brand">$ fortune</kbd></h2>
+        <blockquote class="border-l-4 border-brand pl-3 italic">“Оролдлого ихт оройд нь”</blockquote>
+      </section>
+
+      <!-- Task 1 (same as Bootstrap): form validation via :user-invalid -->
+      <section id="contact" class="grid gap-3 rounded-xl border border-slate-300 bg-white p-6 dark:border-line dark:bg-panel">
+        <h2 class="text-lg font-bold text-slate-900 dark:text-white">📬 Холбоо барих</h2>
+        <p><a class="text-blue-700 hover:underline dark:text-blue-400" href="https://github.com/Tuugii0526" target="_blank" rel="noopener">github.com/Tuugii0526</a></p>
+        <form id="contact-form" class="grid gap-3">
+          <div>
+            <label for="name" class="mb-1 block">Нэр</label>
+            <input id="name" name="name" type="text" required minlength="2"
+              class="peer w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:outline-2 focus:outline-brand user-invalid:border-red-500 dark:border-line dark:bg-ink dark:text-slate-100" />
+            <p class="mt-1 hidden text-sm text-red-600 peer-user-invalid:block dark:text-red-400">Нэрээ оруулна уу (2+ тэмдэгт).</p>
+          </div>
+          <div>
+            <label for="email" class="mb-1 block">И-мэйл</label>
+            <input id="email" name="email" type="email" required
+              class="peer w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:outline-2 focus:outline-brand user-invalid:border-red-500 dark:border-line dark:bg-ink dark:text-slate-100" />
+            <p class="mt-1 hidden text-sm text-red-600 peer-user-invalid:block dark:text-red-400">Зөв и-мэйл хаяг оруулна уу.</p>
+          </div>
+          <div>
+            <label for="msg" class="mb-1 block">Захиа</label>
+            <textarea id="msg" name="msg" rows="3" required minlength="10"
+              class="peer w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:outline-2 focus:outline-brand user-invalid:border-red-500 dark:border-line dark:bg-ink dark:text-slate-100"></textarea>
+            <p class="mt-1 hidden text-sm text-red-600 peer-user-invalid:block dark:text-red-400">Захиа 10+ тэмдэгт байх ёстой.</p>
+          </div>
+          <!-- Task 4: bg-brand comes from @theme --color-brand -->
+          <button type="submit" class="rounded-md bg-brand px-4 py-2 font-bold text-ink hover:bg-brand/85 active:scale-[0.98]">Явуулах</button>
+          <p id="form-ok" role="status" class="hidden rounded-md border border-green-600 bg-green-100 p-3 text-green-900 dark:bg-green-950 dark:text-green-200">Баярлалаа! Захиа илгээгдлээ ✅</p>
+        </form>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="border-t border-slate-300 dark:border-line">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3">
+      <small class="text-slate-600 dark:text-slate-400">© 2026 Намжилдорж Төгөлдөр</small>
+      <a class="text-blue-700 hover:underline dark:text-blue-400" href="#about">↑ дээш гарах</a>
+    </div>
+  </footer>
+
+  <script>
+    // Task 3: dark mode toggle (matched by @custom-variant dark)
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const paint = () => { toggle.textContent = root.dataset.theme === 'dark' ? '☀️' : '🌙'; };
+    paint();
+    toggle.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', root.dataset.theme);
+      paint();
+    });
+
+    // Mobile menu (Tailwind ships no JS)
+    const menuBtn = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      menu.classList.toggle('flex', open);
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+
+    // Submit only fires when the browser's native validation passes.
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('form-ok').classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+
+</html>

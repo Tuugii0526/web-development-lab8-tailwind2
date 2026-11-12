@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Task 3: dark mode driven by data-theme on <html>, not the OS setting. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Task 4: brand colour → bg-brand, text-brand, border-brand, ... */
+@theme {
+  --color-brand: #3fb950;
+  --color-brand-dark: #116329;
+  --color-ink: #0b0f14;
+  --color-panel: #0f151d;
+  --color-line: #1f2a37;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
